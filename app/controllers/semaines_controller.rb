@@ -1,8 +1,8 @@
 class SemainesController < ApplicationController
-  def new
-  end
 
   def create
+    semaine = Semaine.create!(active: false, user: current_user)
+    redirect_to root_path
   end
 
   def show
