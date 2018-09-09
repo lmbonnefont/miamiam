@@ -1,3 +1,2 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Créer une nouvelle semaine", new_semaine_path %>
+<%= link_to "Créer une nouvelle semaine", semaines_path, action: :create, :method => :post %>
+<%= link_to "Voir la semaine en cours", semaine_path(1) %>
