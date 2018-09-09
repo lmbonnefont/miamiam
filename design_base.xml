@@ -105,11 +105,11 @@
 <table x="272" y="132" name="Semaine">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="User" row="id" />
-</row>
+<default>NULL</default></row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="User" row="id" />
+</row>
 <row name="active?" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
