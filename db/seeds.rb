@@ -51,19 +51,46 @@ instructions.each do |ingredient|
   ingredient.gsub!("\n","")
 end
 
+
+#on remplace les ratio par des nombres
+
+substitution_number = {
+  "1/2": 0.5,
+  "1/4": 0.25,
+  "3/4": 0.75,
+}
+
+
 instructions.each do |combinaison|
-  quantité = combinaison.match(/\d/)
-  if quantité == ""
-    quantité = 1
-    ingredient = combinaison
-  else
-    quantité = quantité[0].to_i
-    ingredient = combinaison.match(/\s(.*)/)[0].strip
-    if ingredient == nil
-      ingredient = combinaison
-    else
-      ingredient = ingredient[0].strip
-    end
+  if substitution_number[combinaison[0..2].to_sym] != nil
+    nb = substitution_number[combinaison[0..2].to_sym].to_s
+    combinaison.gsub!(combinaison[0..2], nb)
   end
-   p ingredient
+end
+
+p instructions
+instructions.each do |combinaison|
+  if combinaison.match(/\d.\d/)
+    quantité = combinaison.match(/\d.\d/).to_s
+  elsif combinaison.match(/\d/)
+    quantité = combinaison.match(/\d/).to_s
+  else quantité = 1
+  end
+  ingredient = combinaison[quantité.to_s.length + 1..-1]
+  p quantité.to_s.length + 1
+  p ingredient
+  p quantité
+#   if quantité == ""
+#     quantité = 1
+#     ingredient = combinaison
+#   else
+#     quantité = quantité[0].to_i
+#     ingredient = combinaison.match(/\s(.*)/)[0].strip
+#     if ingredient == nil
+#       ingredient = combinaison
+#     else
+#       ingredient = ingredient[0].strip
+#     end
+  # end
+   # p ingredient
 end
