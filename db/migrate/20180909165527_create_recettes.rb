@@ -4,7 +4,7 @@ class CreateRecettes < ActiveRecord::Migration[5.2]
       t.string :nom
       t.text :instruction
       t.integer :nb_personne
-      t.boolean :deja_choisie
+      t.boolean :deja_choisie, default: false
       t.date :date
       t.references :semaine, foreign_key: true
 
