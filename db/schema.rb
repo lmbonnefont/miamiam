@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_222840) do
     t.string "nom"
     t.text "instruction"
     t.integer "nb_personne"
-    t.boolean "deja_choisie", default: false
+    t.boolean "deja_choisie"
     t.date "date"
     t.bigint "semaine_id"
     t.datetime "created_at", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_222840) do
   end
 
   create_table "semaines", force: :cascade do |t|
-    t.boolean "active", default: true
+    t.boolean "active"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
