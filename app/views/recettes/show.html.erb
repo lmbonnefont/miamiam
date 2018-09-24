@@ -1,2 +1,27 @@
-<h1>Recettes#show</h1>
-<p>Find me in app/views/recettes/show.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="wrapper-recette">
+        <p class= "titre-recette">Ingrédients</p>
+        <% @doses.each do |dose| %>
+          <li><%=  dose.quantite.truncate() %> <%= dose.ingredient %></li>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
+      <div class="wrapper-recette text-center">
+        <span class= "titre-recette"> <%= @recette.nom%></span>
+        <br>
+        <div class="display">
+          <span class = "margin"> <%= cl_image_tag @recette.photo, height: 421, width: 282, crop: :fill %> </span>
+          <%= @recette.instruction %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
