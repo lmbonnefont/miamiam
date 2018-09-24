@@ -14,12 +14,32 @@ url = "http://www.unjourunerecette.fr/que-manger-ce-soir"
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
 
+
+##################################################################
+liens = html_doc.css('a.photoenglob img').take(63)
+
+i = 0
+images = []
+liens.each do |img|
+  if img["data-src"] == nil
+    image = img["src"]
+  else image = img["data-src"]
+  end
+  image = "http://www.unjourunerecette.fr#{image}"
+  images << image
+end
+
+
+###################################################################
+
 recettes = html_doc.search('.photoenglob').take(63)
 
 urls = []
 recettes.each do |element|
   urls << element["href"]
 end
+
+#################################################################### Création des recettes avec la photo associée
 
 urls.each do |lien|
 
@@ -37,15 +57,28 @@ urls.each do |lien|
 
   nombre = html_doc.search('#entouringredients .courses').first.text
   nombre = nombre.strip.match(/\d/)[0].to_i
+  ########################################################################
 
-  recette = Recette.create!(nom: titre, instruction: instructions, nb_personne: nombre)
+  details = html_doc.search('#infos li').text
+  temps = details.scan(/\d+/)
+  preparation = temps[0].to_i
+  cuisson = temps[1].to_i
+  difficulté = details.scan(/(?<=: )(.*)(?=Pr)/).flatten[0]
 
 
-###############################################################################
+ ##############################################################################
+
+  recette = Recette.new(nom: titre, instruction: instructions, nb_personne: nombre, preparation: preparation, cuisson: cuisson, difficulté: difficulté,)
+  recette.remote_photo_url = images[i]
+  recette.save!
+  p recette
+  i = i + 1
+
+############################################################################### Création des doses des recettes
 
 
-instructions = html_doc.search('#ingredients').text.strip.split(",")
-instructions.each do |ingredient|
+  instructions = html_doc.search('#ingredients').text.strip.split(",")
+  instructions.each do |ingredient|
   ingredient.gsub!("\n","")
 end
 
@@ -66,7 +99,7 @@ instructions.each do |combinaison|
   end
 end
 
-p instructions
+
 instructions.each do |combinaison|
   if combinaison.match(/\d.\d/)
     quantité = combinaison.match(/\d.\d/).to_s
@@ -78,6 +111,12 @@ instructions.each do |combinaison|
     ingredient = combinaison
   end
 
+# ############################################################################### Récupération du temps et de la difficulté
+
+
+
+
+###############################################################################
   dose = Dose.create!(quantite: quantité, ingredient:ingredient, recette: recette)
 end
 
@@ -89,5 +128,3 @@ end
 
   puts "Et hop une recette dans la besace :)"
 end
-
-

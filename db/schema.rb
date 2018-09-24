@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_171113) do
+ActiveRecord::Schema.define(version: 2018_09_23_222840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,16 +29,20 @@ ActiveRecord::Schema.define(version: 2018_09_09_171113) do
     t.string "nom"
     t.text "instruction"
     t.integer "nb_personne"
-    t.boolean "deja_choisie", default: false
+    t.boolean "deja_choisie"
     t.date "date"
     t.bigint "semaine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
+    t.integer "cuisson"
+    t.integer "preparation"
+    t.string "difficulté"
     t.index ["semaine_id"], name: "index_recettes_on_semaine_id"
   end
 
   create_table "semaines", force: :cascade do |t|
-    t.boolean "active", default: true
+    t.boolean "active"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

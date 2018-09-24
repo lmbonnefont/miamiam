@@ -3,5 +3,6 @@ class RecettesController < ApplicationController
   end
 
   def index
+    @recettes = Recette.all
   end
 end
