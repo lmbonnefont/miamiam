@@ -1,9 +1,17 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-som-1">
+      <div class="retour">
+        <%= link_to "Retour aux recettes", recettes_path%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-sm-3">
       <div class="wrapper-recette">
-        <p class= "titre-recette">Ingrédients</p>
+        <p class= "titre-ingredient">Ingrédients pour <%= @recette.nb_personne%> personnes</p>
         <% @doses.each do |dose| %>
           <li><%=  dose.quantite.truncate() %> <%= dose.ingredient %></li>
         <% end %>
@@ -13,7 +21,15 @@
     <div class="col-sm-9">
       <div class="wrapper-recette text-center">
         <span class= "titre-recette"> <%= @recette.nom%></span>
-        <br>
+          <div class="row">
+          <div class="col-sm-12">
+            <div class="bandeau">
+              <span>Difficulté: <%= @recette.difficulté %></span>
+              <span>Préparation: <%= @recette.preparation %> min</span>
+              <span>Cuisson: <%= @recette.cuisson %> min</span>
+            </div>
+          </div>
+        </div>
         <div class="display">
           <span class = "margin"> <%= cl_image_tag @recette.photo, height: 421, width: 282, crop: :fill %> </span>
           <%= @recette.instruction %>
