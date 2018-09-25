@@ -1,0 +1,42 @@
+.wrapper-recette {
+  background-color: white;
+  margin-top: 30px;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.titre-recette{
+  font-size: 30px;
+}
+
+.titre-ingredient {
+  font-size: 25px;
+}
+.display{
+  display: flex;
+  align-items: center;
+  width: 90% ;
+}
+
+.margin{
+  margin: 20px;
+}
+
+.bandeau{
+  background-color: #F4F4F4;
+  display: flex;
+  padding-left: 37px;
+  font-size: 15px;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.retour{
+  text-decoration: none;
+  color: black;
+  margin-top: 30px;
+}
+
+.retour:hover {
+  text-decoration: none;
+}
