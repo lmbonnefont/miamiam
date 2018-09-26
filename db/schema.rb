@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_211953) do
+ActiveRecord::Schema.define(version: 2018_09_26_224950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2018_09_26_211953) do
     t.integer "cuisson"
     t.integer "preparation"
     t.string "difficulté"
+    t.bigint "jour_id"
+    t.index ["jour_id"], name: "index_recettes_on_jour_id"
   end
 
   create_table "semaines", force: :cascade do |t|
@@ -70,5 +72,6 @@ ActiveRecord::Schema.define(version: 2018_09_26_211953) do
 
   add_foreign_key "doses", "recettes"
   add_foreign_key "jours", "semaines"
+  add_foreign_key "recettes", "jours"
   add_foreign_key "semaines", "users"
 end
