@@ -3,37 +3,37 @@
     <div class="col-xs-2">
       Lundi
       <br>
-      <%= @jours[0].recette.nom %>
+      <%= link_to @jours[0].recette.nom, recette_path(@jours[0].recette) %>
     </div>
     <div class="col-xs-2">
       Mardi
       <br>
-      <%= @jours[1].recette.nom %>
+        <%= link_to @jours[1].recette.nom, recette_path(@jours[1].recette) %>
     </div>
     <div class="col-xs-2">
       Mercredi
       <br>
-      <%= @jours[2].recette.nom %>
+        <%= link_to @jours[2].recette.nom, recette_path(@jours[2].recette) %>
     </div>
     <div class="col-xs-2">
       Jeudi
       <br>
-      <%= @jours[3].recette.nom %>
+        <%= link_to @jours[3].recette.nom, recette_path(@jours[3].recette) %>
     </div>
     <div class="col-xs-2">
       Vendredi
       <br>
-      <%= @jours[4].recette.nom %>
+        <%= link_to @jours[4].recette.nom, recette_path(@jours[4].recette) %>
     </div>
     <div class="col-xs-2">
       Samedi
       <br>
-      <%= @jours[5].recette.nom %>
+        <%= link_to @jours[5].recette.nom, recette_path(@jours[5].recette) %>
     </div>
     <div class="col-xs-2">
       Dimanche
       <br>
-      <%= @jours[6].recette.nom %>
+        <%= link_to @jours[6].recette.nom, recette_path(@jours[6].recette) %>
     </div>
   </div>
 </div>
