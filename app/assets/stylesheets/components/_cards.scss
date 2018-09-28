@@ -5,7 +5,7 @@
   background-position: center;
   color: white;
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .card-user {
   position: absolute;
@@ -46,4 +46,14 @@
 }
 .card-link:hover {
   opacity: 0.1;
+}
+
+
+.spacing {
+  margin-top: 50px;
+}
+
+.day{
+  color: #574F7F;
+  font-size: 25px;
 }
