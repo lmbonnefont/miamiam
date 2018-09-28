@@ -1,14 +1,32 @@
 require 'open-uri'
 require 'nokogiri'
 
+
 Dose.destroy_all
 Recette.destroy_all
+Jour.destroy_all
 Semaine.destroy_all
 User.destroy_all
 
 user = User.create!(email: "jeanbon@gmail.com", password: "123456")
-semaine = Semaine.create!(active: true, user: user)
 
+
+###################################################################
+for i in (Time.now.strftime('%W').to_i..52)
+  Semaine.create!(active: false, user: user, numero: i)
+end
+
+semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0]
+semaine.active = true
+semaine.save!
+
+Semaine.all.each do |semaine|
+  i = 1
+  for i in (1..7)
+    Jour.create!(date: Date.commercial( 2018, semaine.numero, i ), semaine: semaine)
+  end
+end
+###################################################################
 url = "http://www.unjourunerecette.fr/que-manger-ce-soir"
 
 html_file = open(url).read
