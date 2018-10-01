@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_231922) do
+ActiveRecord::Schema.define(version: 2018_10_01_113542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["semaine_id"], name: "index_jours_on_semaine_id"
+  end
+
+  create_table "listecourses", force: :cascade do |t|
+    t.text "doses"
+    t.bigint "semaine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["semaine_id"], name: "index_listecourses_on_semaine_id"
   end
 
   create_table "recettes", force: :cascade do |t|
@@ -75,6 +83,7 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
 
   add_foreign_key "doses", "recettes"
   add_foreign_key "jours", "semaines"
+  add_foreign_key "listecourses", "semaines"
   add_foreign_key "recettes", "jours"
   add_foreign_key "recettes", "semaines"
   add_foreign_key "semaines", "users"

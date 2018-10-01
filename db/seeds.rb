@@ -5,6 +5,7 @@ require 'nokogiri'
 Dose.destroy_all
 Recette.destroy_all
 Jour.destroy_all
+Listecourse.destroy_all
 Semaine.destroy_all
 User.destroy_all
 
@@ -13,7 +14,8 @@ user = User.create!(email: "jeanbon@gmail.com", password: "123456")
 
 ###################################################################
 for i in (Time.now.strftime('%W').to_i..52)
-  Semaine.create!(active: false, user: user, numero: i)
+  s = Semaine.create!(active: false, user: user, numero: i)
+  Listecourse.create!(semaine: s)
 end
 
 semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0]
