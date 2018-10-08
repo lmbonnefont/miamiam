@@ -1,4 +1,4 @@
 class Listecourse < ApplicationRecord
   belongs_to :semaine
-  serialize :doses,Array
+  has_many :doses
 end
