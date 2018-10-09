@@ -1,6 +1,12 @@
-<% @h.each do |key, value| %>
-  <% if !@notdisplayed.include? key %>
-    <p> <%= value.ceil %> <%= key %> </p>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <% @h.each do |key, value| %>
+      <% if !@notdisplayed.include? key %>
+        <div class="col-xs-3">
+         <%= value.ceil %> <%= key %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
