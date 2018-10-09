@@ -1,3 +1,6 @@
-<% @listecourse.doses.each do |dose| %>
-  <%= dose[0] %>
+<% @h.each do |key, value| %>
+  <% if !@notdisplayed.include? key %>
+    <p> <%= value.ceil %> <%= key %> </p>
+  <% end %>
 <% end %>
+

@@ -7,7 +7,7 @@ class SemainesController < ApplicationController
 
   def show
     @semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0] #on sélectionne la semaine en cours
-    @semaine = Semaine.find(2)
+    @semaine = Semaine.first
     @jours = @semaine.jours
     @listecourse = @semaine.listecourse[0]
 

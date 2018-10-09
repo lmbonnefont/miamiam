@@ -36,7 +36,7 @@ html_doc = Nokogiri::HTML(html_file)
 
 
 ##################################################################
-liens = html_doc.css('a.photoenglob img').take(63)
+liens = html_doc.css('a.photoenglob img').take(52)
 
 i = 0
 images = []
@@ -52,7 +52,7 @@ end
 
 ###################################################################
 
-recettes = html_doc.search('.photoenglob').take(63)
+recettes = html_doc.search('.photoenglob').take(52)
 
 urls = []
 recettes.each do |element|
