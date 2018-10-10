@@ -2,8 +2,10 @@
   <div class="row">
     <% @h.each do |key, value| %>
       <% if !@notdisplayed.include? key %>
-        <div class="col-xs-3">
-         <%= value.ceil %> <%= key %>
+        <div class="col-xs-4">
+          <div class="ingredient">
+            <%= value.ceil %> <%= key %>
+          </div>
         </div>
       <% end %>
     <% end %>

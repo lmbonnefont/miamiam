@@ -1,0 +1,4 @@
+<%= simple_form_for @semaine, url: semaines_savenbjours_path, method: :post do |f| %>
+  <%= f.input :nbjour, placeholder: "Combien de repas prendrez-vous avec nous cette semaine ?" %>
+  <%= f.submit "Voir la semaine", class: "btn btn-primary" %>
+<% end %>
