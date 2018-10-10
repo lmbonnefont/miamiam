@@ -6,7 +6,7 @@
     <% for i in (1..@semaine.nbjour) do %>
 
       <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Jour <%= i %></span>
+        <span class ="day">Repas <%= i %></span>
         <br>
         <% recette = @semaine.recettes[i] %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
@@ -22,4 +22,9 @@
 
     <% end %>
 
-<%= link_to "ma liste de course", semaine_listedecourse_path(@semaine) %>
+  </div>
+</div>
+
+<%= link_to "Ma liste de course", semaine_listedecourse_path(@semaine) %>
+<br>
+<%= link_to "Modifier le nombre de repas", semaines_nbjours_path %>

@@ -31,6 +31,8 @@ class SemainesController < ApplicationController
       @semaine.set = true
       @semaine.save!
     end
+
+    raise
   end
 
   def nbjours
