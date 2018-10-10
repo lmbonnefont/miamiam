@@ -3,11 +3,12 @@
   <div class="row">
 
 
+    <% for i in (1..@semaine.nbjour) do %>
 
       <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Lundi</span>
+        <span class ="day">Jour <%= i %></span>
         <br>
-        <% recette = @jours.select{|j| j.date.monday?}[0].recette %>
+        <% recette = @semaine.recettes[i] %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
           <div class="card-category"><%= recette.difficulté %></div>
           <div class="card-description">
@@ -19,118 +20,6 @@
         </div>
       </div>
 
-
-      <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Mardi</span>
-        <br>
-        <% recette = @jours.select{|j| j.date.tuesday?}[0].recette %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="card-category"><%= recette.difficulté %></div>
-          <div class="card-description">
-            <h2><%= recette.nom %></h2>
-            <p> temps en cuisine: <%= recette.cuisson + recette.preparation %> min</p>
-          </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <%= link_to "", recette_path(recette), class: "card-link" %>
-        </div>
-      </div>
-
-
-
-
-      <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Mercredi</span>
-        <br>
-        <% recette = @jours.select{|j| j.date.wednesday?}[0].recette %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="card-category"><%= recette.difficulté %></div>
-          <div class="card-description">
-            <h2><%= recette.nom %></h2>
-            <p> temps en cuisine: <%= recette.cuisson + recette.preparation %> min</p>
-          </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <%= link_to "", recette_path(recette), class: "card-link" %>
-        </div>
-      </div>
-
-
-
-      <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Mercredi</span>
-        <br>
-        <% recette = @jours.select{|j| j.date.thursday?}[0].recette %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="card-category"><%= recette.difficulté %></div>
-          <div class="card-description">
-            <h2><%= recette.nom %></h2>
-            <p> temps en cuisine: <%= recette.cuisson + recette.preparation %> min</p>
-          </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <%= link_to "", recette_path(recette), class: "card-link" %>
-        </div>
-      </div>
-
-
-
-
-
-
-
-      <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Mercredi</span>
-        <br>
-        <% recette = @jours.select{|j| j.date.friday?}[0].recette %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="card-category"><%= recette.difficulté %></div>
-          <div class="card-description">
-            <h2><%= recette.nom %></h2>
-            <p> temps en cuisine: <%= recette.cuisson + recette.preparation %> min</p>
-          </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <%= link_to "", recette_path(recette), class: "card-link" %>
-        </div>
-      </div>
-
-
-
-
-
-
-
-      <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Mercredi</span>
-        <br>
-        <% recette = @jours.select{|j| j.date.saturday?}[0].recette %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="card-category"><%= recette.difficulté %></div>
-          <div class="card-description">
-            <h2><%= recette.nom %></h2>
-            <p> temps en cuisine: <%= recette.cuisson + recette.preparation %> min</p>
-          </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <%= link_to "", recette_path(recette), class: "card-link" %>
-        </div>
-      </div>
-
-
-
-      <div class="col-xs-3 spacing" align="center">
-        <span class ="day">Mercredi</span>
-        <br>
-        <% recette = @jours.select{|j| j.date.sunday?}[0].recette %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path recette.photo, height: 300, width: 400, crop: :fill %>');">
-          <div class="card-category"><%= recette.difficulté %></div>
-          <div class="card-description">
-            <h2><%= recette.nom %></h2>
-            <p> temps en cuisine: <%= recette.cuisson + recette.preparation %> min</p>
-          </div>
-          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-          <%= link_to "", recette_path(recette), class: "card-link" %>
-        </div>
-      </div>
-
-
-  </div>
-</div>
+    <% end %>
 
 <%= link_to "ma liste de course", semaine_listedecourse_path(@semaine) %>

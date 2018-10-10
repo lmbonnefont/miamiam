@@ -7,17 +7,17 @@ class SemainesController < ApplicationController
 
 
   def show
-    raise
+
     @semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0] #on sélectionne la semaine en cours
     @semaine = Semaine.first
     @jours = @semaine.jours
-    @listecourse = @semaine.listecourse[0]
+    @listecourse = @semaine.listecourses[0]
 
     if @semaine.set == false
       @recette = Recette.where(deja_choisie: false)
-      @selected = @recette.sample(7)
+      @selected = @recette.sample(@semaine.nbjour)
 
-      for i in (0..6)
+      for i in (1..@semaine.nbjour)
         @selected[i].jour = @jours[i]
         @selected[i].deja_choisie = true
         @selected[i].save!
