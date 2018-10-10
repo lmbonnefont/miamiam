@@ -13,6 +13,7 @@ class SemainesController < ApplicationController
     @jours = @semaine.jours
     @listecourse = @semaine.listecourses[0]
 
+
     if @semaine.set == false
       @recette = Recette.where(deja_choisie: false)
       @selected = @recette.sample(@semaine.nbjour)
