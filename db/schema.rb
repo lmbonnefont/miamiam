@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_231922) do
+ActiveRecord::Schema.define(version: 2018_10_10_114607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
     t.bigint "recette_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "listecourse_id"
+    t.index ["listecourse_id"], name: "index_doses_on_listecourse_id"
     t.index ["recette_id"], name: "index_doses_on_recette_id"
   end
 
@@ -33,13 +35,19 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
     t.index ["semaine_id"], name: "index_jours_on_semaine_id"
   end
 
+  create_table "listecourses", force: :cascade do |t|
+    t.bigint "semaine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["semaine_id"], name: "index_listecourses_on_semaine_id"
+  end
+
   create_table "recettes", force: :cascade do |t|
     t.string "nom"
     t.text "instruction"
     t.integer "nb_personne"
     t.boolean "deja_choisie", default: false
     t.date "date"
-    t.bigint "semaine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
@@ -48,7 +56,6 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
     t.string "difficulté"
     t.bigint "jour_id"
     t.index ["jour_id"], name: "index_recettes_on_jour_id"
-    t.index ["semaine_id"], name: "index_recettes_on_semaine_id"
   end
 
   create_table "semaines", force: :cascade do |t|
@@ -58,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
     t.datetime "updated_at", null: false
     t.integer "numero"
     t.boolean "set", default: false
+    t.integer "nbjour", default: 5
     t.index ["user_id"], name: "index_semaines_on_user_id"
   end
 
@@ -73,9 +81,10 @@ ActiveRecord::Schema.define(version: 2018_09_26_231922) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "doses", "listecourses"
   add_foreign_key "doses", "recettes"
   add_foreign_key "jours", "semaines"
+  add_foreign_key "listecourses", "semaines"
   add_foreign_key "recettes", "jours"
-  add_foreign_key "recettes", "semaines"
   add_foreign_key "semaines", "users"
 end

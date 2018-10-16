@@ -1,0 +1,18 @@
+
+<div class="container">
+  <div class="row spacing_link">
+    <i class="fas fa-backward"></i>  <%= link_to "Mes recettes de la semaine", semaine_path(Semaine.first), class: "killstyle" %>
+  </div>
+  <div class="row">
+    <% @h.each do |key, value| %>
+      <% if !@notdisplayed.include? key %>
+        <div class="col-xs-4">
+          <div class="ingredient">
+            <%= value.ceil %> <%= key %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

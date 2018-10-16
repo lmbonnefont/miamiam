@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <%= simple_form_for @semaine, url: semaines_savenbjours_path, method: :post do |f| %>
+    <%= f.input :nbjour, placeholder: "Combien de repas prendrez-vous avec nous cette semaine ?", collection: (1..7), label: "Nombre de repas"%>
+    <%= f.submit "Voir la semaine", class: "btn btn-primary" %>
+  <% end %>
+</div>

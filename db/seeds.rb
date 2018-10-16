@@ -5,6 +5,7 @@ require 'nokogiri'
 Dose.destroy_all
 Recette.destroy_all
 Jour.destroy_all
+Listecourse.destroy_all
 Semaine.destroy_all
 User.destroy_all
 
@@ -13,7 +14,8 @@ user = User.create!(email: "jeanbon@gmail.com", password: "123456")
 
 ###################################################################
 for i in (Time.now.strftime('%W').to_i..52)
-  Semaine.create!(active: false, user: user, numero: i)
+  s = Semaine.create!(active: false, user: user, numero: i)
+  Listecourse.create!(semaine: s)
 end
 
 semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0]
@@ -34,7 +36,7 @@ html_doc = Nokogiri::HTML(html_file)
 
 
 ##################################################################
-liens = html_doc.css('a.photoenglob img').take(63)
+liens = html_doc.css('a.photoenglob img').take(52)
 
 i = 0
 images = []
@@ -50,7 +52,7 @@ end
 
 ###################################################################
 
-recettes = html_doc.search('.photoenglob').take(63)
+recettes = html_doc.search('.photoenglob').take(52)
 
 urls = []
 recettes.each do |element|
