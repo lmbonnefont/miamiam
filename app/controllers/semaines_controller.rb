@@ -19,11 +19,11 @@ class SemainesController < ApplicationController
       @selected = @recette.sample(@semaine.nbjour)
 
       for i in (1..@semaine.nbjour)
-        @selected[i].jour = @jours[i]
-        @selected[i].deja_choisie = true
-        @selected[i].save!
+        @selected[i-1].jour = @jours[i-1]
+        @selected[i-1].deja_choisie = true
+        @selected[i-1].save!
 
-        @selected[i].doses.each do |dose|
+        @selected[i-1].doses.each do |dose|
           dose.listecourse = @listecourse
           dose.save!
         end
@@ -31,8 +31,6 @@ class SemainesController < ApplicationController
       @semaine.set = true
       @semaine.save!
     end
-
-    raise
   end
 
   def nbjours
@@ -40,9 +38,20 @@ class SemainesController < ApplicationController
   end
 
   def savenbjours
-    @semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0]
-    @semaine.nbjour = params["semaine"]["nbjour"].to_i
-    @semaine.save!
+    semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0]
+    semaine.nbjour = params["semaine"]["nbjour"].to_i
+    semaine.set = false
+    semaine.save!
+
+    recettes = semaine.recettes
+    recettes.each do |recette|
+      recette.jour = nil
+      recette.doses.each do |dose|
+        dose.update(listecourse: nil)
+      end
+      recette.save!
+    end
+
     redirect_to semaine_path(Semaine.first)
   end
 

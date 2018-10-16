@@ -1,8 +1,8 @@
 class ListedecoursesController < ApplicationController
   def show
     semaine = Semaine.find(params["semaine_id"])
-    @listecourse = semaine.listecourse[0]
-    @notdisplayed = ["sel", "poivre."]
+    @listecourse = semaine.listecourses[0]
+    @notdisplayed = ["sel", "poivre.", "Poivre", "Sel", "sel.", "poivre", "Sel.", "Poivre."]
     @h = matching(@listecourse.doses)
   end
 
