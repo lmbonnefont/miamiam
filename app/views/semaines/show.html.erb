@@ -1,4 +1,17 @@
 
+
+<div class="flexdiv">
+  <% if Semaine.exists?(params["id"].to_i - 1)%>
+    <%= link_to "Semaine précédente", Semaine.find(params["id"].to_i - 1) %>
+  <% end %>
+
+  <div class="titresemaine"><%= "Semaine #{@semaine.numero}" %></div>
+
+  <% if Semaine.exists?(params["id"].to_i + 1)%>
+    <%= link_to "Semaine suivante", Semaine.find(params["id"].to_i + 1) %>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row">
 
@@ -27,6 +40,6 @@
 <br>
 <div class="centerbox">
   <%= link_to "Ma liste de course", semaine_listedecourse_path(@semaine), class: "btn btn-primary btn-sm" %>
-  <%= link_to "Modifier le nombre de repas", semaines_nbjours_path, class: "btn btn-primary btn-sm" %>
+  <%= link_to "Modifier le nombre de repas", semaine_nbjours_path(@semaine), class: "btn btn-primary btn-sm" %>
 </div>
 

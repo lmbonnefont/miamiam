@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
       <div class="spacing_link">
-         <%= link_to "Mes recettes de la semaine", semaine_path(1), class: "killstyle"%>
+         <%= link_to "Mes recettes de la semaine", semaine_path(Semaine.first), class: "killstyle"%>
         <br>
          <%= link_to "Toutes les recettes", recettes_path, class: "killstyle"%>
       </div>

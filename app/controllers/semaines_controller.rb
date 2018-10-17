@@ -7,9 +7,7 @@ class SemainesController < ApplicationController
 
 
   def show
-
-    @semaine = Semaine.where(numero: Time.now.strftime('%W').to_i)[0] #on sélectionne la semaine en cours
-    @semaine = Semaine.first
+    @semaine = Semaine.find(params["id"].to_i) #on sélectionne la semaine en cours
     @jours = @semaine.jours
     @listecourse = @semaine.listecourses[0]
 
@@ -34,7 +32,7 @@ class SemainesController < ApplicationController
   end
 
   def nbjours
-    @semaine = Semaine.new
+    @semaine = Semaine.find(params["semaine_id"])
   end
 
   def savenbjours
@@ -51,7 +49,6 @@ class SemainesController < ApplicationController
       end
       recette.save!
     end
-
     redirect_to semaine_path(Semaine.first)
   end
 
