@@ -181,6 +181,7 @@ GEM
     sassc (1.12.1)
       ffi (~> 1.9.6)
       sass (>= 3.3.0)
+    similar_text (0.0.4)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   rails (= 5.2.1)
   redis
   sass-rails
+  similar_text
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -253,4 +255,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.4
+   1.17.1

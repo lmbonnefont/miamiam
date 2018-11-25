@@ -1,0 +1,7 @@
+<%= simple_form_for [@recette, @dose] do |f| %>
+    <%= f.input :quantite  %>
+    <%= f.input :unite %>
+    <%= f.input :ingredient %>
+
+    <%= f.submit "Ajouter mes doses", class: "btn btn-primary" %>
+  <% end %>

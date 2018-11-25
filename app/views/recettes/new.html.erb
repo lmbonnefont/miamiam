@@ -1,0 +1,9 @@
+<%= simple_form_for @recette do |f| %>
+    <%= f.input :nom, label: "Nom de la recette"  %>
+    <%= f.input :nb_personne, label: "Nombre d'affamés"  %>
+    <%= f.input :preparation, placeholder: "Temps de Preparation", label: "Temps de préparation (min)"  %>
+    <%= f.input :cuisson, placeholder: "Temps de Cuisson", label: "Temps de cuisson (min)"  %>
+    <%= f.input :difficulté, collection: ["Très facile", "Facile", "Moyen", "Difficile", "Très difficile"]  %>
+    <%= f.input :instruction %>
+    <%= f.submit "Ajouter mes doses", class: "btn btn-primary" %>
+  <% end %>
