@@ -15,7 +15,9 @@ class RecettesController < ApplicationController
   end
 
   def create
-    recette = Recette.create!(recettes_params)
+    recette = Recette.new(recettes_params)
+    recette.mes_recettes = true
+    recette.save
     redirect_to new_recette_dose_path(recette)
   end
 
