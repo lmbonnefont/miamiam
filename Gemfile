@@ -20,6 +20,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'similar_text'
+gem 'cocoon'
 
 
 group :development do

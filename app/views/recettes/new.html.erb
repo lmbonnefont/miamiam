@@ -5,5 +5,7 @@
     <%= f.input :cuisson, placeholder: "Temps de Cuisson", label: "Temps de cuisson (min)"  %>
     <%= f.input :difficulté, collection: ["Très facile", "Facile", "Moyen", "Difficile", "Très difficile"]  %>
     <%= f.input :instruction %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.submit "Ajouter mes doses", class: "btn btn-primary" %>
   <% end %>
