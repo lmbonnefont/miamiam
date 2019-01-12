@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :semaines, only: [:new, :create, :show] do
     resources :listedecourses, only: [:show]
   end
-  resources :recettes, only: [:show, :index]
+  resources :recettes do
+    resources :doses, only: [:new, :create]
+  end
 end

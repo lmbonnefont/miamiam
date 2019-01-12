@@ -62,6 +62,7 @@ GEM
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
+    cocoon (1.2.12)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
@@ -181,6 +182,7 @@ GEM
     sassc (1.12.1)
       ffi (~> 1.9.6)
       sass (>= 3.3.0)
+    similar_text (0.0.4)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -230,6 +232,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   carrierwave (~> 1.2)
   cloudinary
+  cocoon
   devise
   dotenv-rails
   font-awesome-sass (~> 5.0.9)
@@ -242,6 +245,7 @@ DEPENDENCIES
   rails (= 5.2.1)
   redis
   sass-rails
+  similar_text
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -253,4 +257,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.4
+   1.17.1
