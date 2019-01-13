@@ -1,6 +1,6 @@
 <div class="container">
 
-  <p>Vos recettes</p>
+  <p class="spacingvertical">Vos recettes</p>
 
   <div class="row">
 
@@ -21,8 +21,11 @@
     <% end %>
 
   </div>
+
   <div class="row">
-    <%= link_to "Ajouter une recette", new_recette_path, class: "btn btn-success btn-lg" %>
+    <div class="col-sm-offset-4 spacingvertical">
+      <%= link_to "Ajouter une recette", new_recette_path, class: "btn btn-danger btn-lg" %>
+    </div>
   </div>
 
 
