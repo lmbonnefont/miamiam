@@ -1,8 +1,13 @@
-<%= simple_form_for [@recette, @dose] do |f| %>
+<p> dose <%= @recette.nb_doses_created + 1 %>/<%= @recette.nb_doses %></p>
+<div class="wrapper">
+  <%= simple_form_for [@recette, @dose] do |f| %>
 
-<%= f.input :ingredient %>
-<%= f.input :quantite %>
-<%= f.input :unite %>
-<%= f.submit "Dose suivante", class: "btn btn-primary" %>
+    <%= f.input :ingredient %>
+    <%= f.input :quantite %>
+    <%= f.input :unite %>
+    <%= f.submit "Dose suivante", class: "btn btn-primary" %>
 
-<% end %>
+  <% end %>
+
+</div>
+
